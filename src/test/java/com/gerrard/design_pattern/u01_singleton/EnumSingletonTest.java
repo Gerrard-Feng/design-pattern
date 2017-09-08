@@ -2,7 +2,7 @@ package com.gerrard.design_pattern.u01_singleton;
 
 import org.junit.Test;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class EnumSingletonTest {
 

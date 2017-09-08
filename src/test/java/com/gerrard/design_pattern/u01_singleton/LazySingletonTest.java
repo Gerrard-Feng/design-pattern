@@ -4,7 +4,7 @@ import java.lang.reflect.Constructor;
 
 import org.junit.Test;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class LazySingletonTest {
 

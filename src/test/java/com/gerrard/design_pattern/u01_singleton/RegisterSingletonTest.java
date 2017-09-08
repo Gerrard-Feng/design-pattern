@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.gerrard.design_pattern.u01_singleton.RegisterSingletonChild;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class RegisterSingletonTest {
 
