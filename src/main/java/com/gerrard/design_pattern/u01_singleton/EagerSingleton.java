@@ -1,6 +1,6 @@
 package com.gerrard.design_pattern.u01_singleton;
 
-public class EagerSingleton {
+public final class EagerSingleton {
 
 	private static final EagerSingleton instance = new EagerSingleton();
 

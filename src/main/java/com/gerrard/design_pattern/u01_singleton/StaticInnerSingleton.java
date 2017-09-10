@@ -1,18 +1,18 @@
 package com.gerrard.design_pattern.u01_singleton;
 
-public class StaticSingleton {
+public class StaticInnerSingleton {
 
-	private StaticSingleton() {
+	private StaticInnerSingleton() {
 		if (SingletonHolder.instance != null) {
 			throw new IllegalStateException();
 		}
 	}
 
 	private static class SingletonHolder {
-		private static StaticSingleton instance = new StaticSingleton();
+		private static StaticInnerSingleton instance = new StaticInnerSingleton();
 	}
 
-	public static StaticSingleton getInstance() {
+	public static StaticInnerSingleton getInstance() {
 		return SingletonHolder.instance;
 	}
 
