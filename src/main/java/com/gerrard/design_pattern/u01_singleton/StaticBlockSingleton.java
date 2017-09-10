@@ -1,6 +1,6 @@
 package com.gerrard.design_pattern.u01_singleton;
 
-public class StaticBlockSingleton {
+public final class StaticBlockSingleton {
 
 	private static final StaticBlockSingleton instance;
 

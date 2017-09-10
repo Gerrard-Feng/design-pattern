@@ -1,6 +1,6 @@
 package com.gerrard.design_pattern.u01_singleton;
 
-public class RegisterSingletonChild extends RegisterSingleton {
+public final class RegisterSingletonChild extends RegisterSingleton {
 
 	private RegisterSingletonChild() {
 

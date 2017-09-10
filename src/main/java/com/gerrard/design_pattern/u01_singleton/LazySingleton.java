@@ -1,6 +1,6 @@
 package com.gerrard.design_pattern.u01_singleton;
 
-public class LazySingleton {
+public final class LazySingleton {
 
 	private static volatile LazySingleton instance;
 

@@ -1,6 +1,6 @@
 package com.gerrard.design_pattern.u01_singleton;
 
-public class StaticInnerSingleton {
+public final class StaticInnerSingleton {
 
 	private StaticInnerSingleton() {
 		if (SingletonHolder.instance != null) {

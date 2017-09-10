@@ -13,6 +13,8 @@ public class RegisterSingleton {
 	private static final Map<String, RegisterSingleton> registry = new HashMap<>();
 	private static final String name;
 
+	private static volatile Object lock;
+	
 	static {
 		RegisterSingleton registerSingleton = new RegisterSingleton();
 		name = registerSingleton.getClass().getName();
@@ -24,11 +26,13 @@ public class RegisterSingleton {
 			name = RegisterSingleton.name;
 		} else if (registry.get(name) == null) {
 			try {
-				Class<?> clazz = Class.forName(name);
-				Constructor<?> constructor = clazz.getDeclaredConstructor();
-				constructor.setAccessible(true);
-				RegisterSingleton singleton = (RegisterSingleton) constructor.newInstance();
-				registry.put(name, singleton);
+				synchronized (lock) {
+					Class<?> clazz = Class.forName(name);
+					Constructor<?> constructor = clazz.getDeclaredConstructor();
+					constructor.setAccessible(true);
+					RegisterSingleton singleton = (RegisterSingleton) constructor.newInstance();
+					registry.put(name, singleton);
+				}
 			} catch (Exception e) {
 				throw new IllegalArgumentException();
 			}
