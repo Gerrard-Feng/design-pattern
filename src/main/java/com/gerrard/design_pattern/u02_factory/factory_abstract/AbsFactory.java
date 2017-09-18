@@ -2,8 +2,8 @@ package com.gerrard.design_pattern.u02_factory.factory_abstract;
 
 public abstract class AbsFactory {
 
-	abstract AbsProductA createProductA();
+	protected abstract AbsUser createUser();
 
-	abstract AbsProductB createProductB();
+	protected abstract AbsDepartment createDepartment();
 
 }
