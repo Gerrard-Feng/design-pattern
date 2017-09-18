@@ -12,7 +12,7 @@ public final class OperationFactory3 {
 	private static final Map<Class<?>, AbsOperation> operMap = new HashMap<>();
 
 	@SuppressWarnings("unchecked")
-	public static <T extends AbsOperation> T createOperation3(Class<T> operationClass) {
+	public static <T extends AbsOperation> T createOperation(Class<T> operationClass) {
 		try {
 			T t;
 			if (operMap.containsKey(operationClass)) {
