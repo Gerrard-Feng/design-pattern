@@ -1,4 +1,4 @@
-package com.gerrard.design_pattern.u02_factory.enums;
+package com.gerrard.design_pattern.u02_factory;
 
 public enum OperatorEnum {
 

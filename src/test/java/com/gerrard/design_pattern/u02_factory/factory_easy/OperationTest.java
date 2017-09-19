@@ -3,7 +3,7 @@ package com.gerrard.design_pattern.u02_factory.factory_easy;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.gerrard.design_pattern.u02_factory.enums.OperatorEnum;
+import com.gerrard.design_pattern.u02_factory.OperatorEnum;
 
 public class OperationTest {
 

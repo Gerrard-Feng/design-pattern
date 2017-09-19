@@ -1,6 +1,6 @@
 package com.gerrard.design_pattern.u02_factory.factory_easy;
 
-import com.gerrard.design_pattern.u02_factory.enums.OperatorEnum;
+import com.gerrard.design_pattern.u02_factory.OperatorEnum;
 
 public final class OperationFactory1 {
 
