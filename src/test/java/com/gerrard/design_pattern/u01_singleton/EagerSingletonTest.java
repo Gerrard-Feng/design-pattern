@@ -1,7 +1,7 @@
 package com.gerrard.design_pattern.u01_singleton;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 
@@ -11,7 +11,7 @@ public class EagerSingletonTest {
     public void testSingleton() {
         EagerSingleton singleton1 = EagerSingleton.getInstance();
         EagerSingleton singleton2 = EagerSingleton.getInstance();
-        Assert.assertSame(singleton1, singleton2);
+        Assertions.assertSame(singleton1, singleton2);
     }
 
     @Test
@@ -21,7 +21,7 @@ public class EagerSingletonTest {
         constructor.setAccessible(true);
         try {
             EagerSingleton singleton2 = (EagerSingleton) constructor.newInstance();
-            Assert.fail();
+            Assertions.fail();
         } catch (Exception e) {
             // Do nothing, test pass
         }

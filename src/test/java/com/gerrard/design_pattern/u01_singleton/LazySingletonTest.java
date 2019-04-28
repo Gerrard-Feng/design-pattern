@@ -1,7 +1,7 @@
 package com.gerrard.design_pattern.u01_singleton;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 
@@ -13,7 +13,7 @@ public class LazySingletonTest {
         constructor.setAccessible(true);
         LazySingleton1 singleton1 = (LazySingleton1) constructor.newInstance();
         LazySingleton1 singleton2 = LazySingleton1.getInstance();
-        Assert.assertNotSame(singleton1, singleton2);
+        Assertions.assertNotSame(singleton1, singleton2);
     }
 
     @Test
@@ -23,7 +23,7 @@ public class LazySingletonTest {
         constructor.setAccessible(true);
         try {
             LazySingleton1 singleton2 = (LazySingleton1) constructor.newInstance();
-            Assert.fail();
+            Assertions.fail();
         } catch (Exception e) {
             // Do nothing, test pass
         }

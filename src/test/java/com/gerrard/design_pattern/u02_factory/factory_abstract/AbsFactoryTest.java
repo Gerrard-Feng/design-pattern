@@ -1,6 +1,6 @@
 package com.gerrard.design_pattern.u02_factory.factory_abstract;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public final class AbsFactoryTest {
 

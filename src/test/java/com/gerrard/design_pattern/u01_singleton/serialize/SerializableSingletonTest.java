@@ -1,7 +1,7 @@
 package com.gerrard.design_pattern.u01_singleton.serialize;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -37,7 +37,7 @@ public class SerializableSingletonTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertNotSame(singleton1, singleton2);
+        Assertions.assertNotSame(singleton1, singleton2);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class SerializableSingletonTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertSame(singleton1, singleton2);
+        Assertions.assertSame(singleton1, singleton2);
     }
 
 }

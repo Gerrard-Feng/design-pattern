@@ -2,8 +2,8 @@ package com.gerrard.design_pattern.u01_singleton;
 
 import java.lang.reflect.Constructor;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class StaticBlockSingletonTest {
 
@@ -15,8 +15,8 @@ public class StaticBlockSingletonTest {
 		StaticBlockSingleton singleton3 = (StaticBlockSingleton) constructor.newInstance();
 		StaticBlockSingleton singleton1 = StaticBlockSingleton.getInstance();
 		StaticBlockSingleton singleton2 = StaticBlockSingleton.getInstance();
-		Assert.assertSame(singleton1, singleton2);
-		Assert.assertNotSame(singleton1, singleton3);
+		Assertions.assertSame(singleton1, singleton2);
+		Assertions.assertNotSame(singleton1, singleton3);
 	}
 
 }

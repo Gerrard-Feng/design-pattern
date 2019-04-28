@@ -1,7 +1,7 @@
 package com.gerrard.design_pattern.u01_singleton;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class EnumSingletonTest {
 
@@ -9,7 +9,7 @@ public class EnumSingletonTest {
     public void testSingleton() {
         EnumSingleton singleton1 = EnumSingleton.INSTANCE;
         EnumSingleton singleton2 = EnumSingleton.INSTANCE;
-        Assert.assertSame(singleton1, singleton2);
+        Assertions.assertSame(singleton1, singleton2);
     }
 
 }
