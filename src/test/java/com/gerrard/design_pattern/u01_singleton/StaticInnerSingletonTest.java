@@ -12,7 +12,6 @@ public class StaticInnerSingletonTest {
 
 	@Test
 	public void test() throws Exception {
-		// 反射入侵失败
 		Class<?> clazz = StaticInnerSingleton.class;
 		Constructor<?> constructor = clazz.getDeclaredConstructor();
 		constructor.setAccessible(true);
@@ -23,4 +22,15 @@ public class StaticInnerSingletonTest {
 		Assert.assertNotSame(singleton1, singleton3);
 	}
 
+	@Test
+	public void test2() throws Exception {
+		Class<?> clazz = StaticInnerSingleton.class;
+		Constructor<?> constructor = clazz.getDeclaredConstructor();
+		constructor.setAccessible(true);
+		StaticInnerSingleton singleton3 = (StaticInnerSingleton) constructor.newInstance();
+		StaticInnerSingleton singleton1 = StaticInnerSingleton.getInstance();
+		StaticInnerSingleton singleton2 = StaticInnerSingleton.getInstance();
+		Assert.assertSame(singleton1, singleton2);
+		Assert.assertNotSame(singleton1, singleton3);
+	}
 }

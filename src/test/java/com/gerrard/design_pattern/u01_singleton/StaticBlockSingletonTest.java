@@ -8,7 +8,7 @@ import org.junit.Test;
 public class StaticBlockSingletonTest {
 
 	@Test
-	public void test() throws Exception {
+	public void testSingleton() throws Exception {
 		Class<?> clazz = StaticBlockSingleton.class;
 		Constructor<?> constructor = clazz.getDeclaredConstructor();
 		constructor.setAccessible(true);

@@ -2,7 +2,7 @@ package com.gerrard.design_pattern.u01_singleton.serialize;
 
 import java.io.Serializable;
 
-public class SerializableSingleton implements Serializable {
+public final class SerializableSingleton implements Serializable {
 
 	private static final long serialVersionUID = -6451544700567522443L;
 

@@ -1,25 +1,39 @@
 package com.gerrard.design_pattern.u01_singleton;
 
-import java.lang.reflect.Constructor;
-
+import org.junit.Assert;
 import org.junit.Test;
 
-import com.gerrard.design_pattern.u01_singleton.RegisterSingletonChild;
-
-import org.junit.Assert;
+import java.lang.reflect.Constructor;
 
 public class RegisterSingletonTest {
 
-	@Test
-	public void test() throws Exception {
-		RegisterSingletonChild child1 = RegisterSingletonChild.getInstance();
-		RegisterSingletonChild child2 = RegisterSingletonChild.getInstance();
-		Assert.assertSame(child1, child2);
-		// 反射入侵成功
-		Constructor<?> constructor = RegisterSingletonChild.class.getDeclaredConstructor();
-		constructor.setAccessible(true);
-		RegisterSingletonChild child3 = (RegisterSingletonChild) constructor.newInstance();
-		Assert.assertNotSame(child1, child3);
-	}
+    @Test
+    public void testSingleton() throws Exception {
+        RegisterSingletonChild singleton1 = RegisterSingletonChild.getInstance();
+        RegisterSingletonChild singleton2 = RegisterSingletonChild.getInstance();
+        Assert.assertSame(singleton1, singleton2);
+    }
+
+    @Test
+    public void testReflectSuccess() throws Exception {
+        Constructor<?> constructor = RegisterSingletonChild.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        RegisterSingletonChild singleton1 = (RegisterSingletonChild) constructor.newInstance();
+        RegisterSingletonChild singleton2 = RegisterSingletonChild.getInstance();
+        Assert.assertNotSame(singleton1, singleton2);
+    }
+
+    @Test
+    public void testReflectFailure() throws Exception {
+        RegisterSingletonChild singleton1 = RegisterSingletonChild.getInstance();
+        Constructor<?> constructor = LazySingleton1.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        try {
+            RegisterSingletonChild singleton2 = (RegisterSingletonChild) constructor.newInstance();
+            Assert.fail();
+        } catch (Exception e) {
+            // Do nothing, test pass
+        }
+    }
 
 }
