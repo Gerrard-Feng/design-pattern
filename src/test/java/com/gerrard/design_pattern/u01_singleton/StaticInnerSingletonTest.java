@@ -5,29 +5,25 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 
-public class StaticInnerSingletonTest {
+public final class StaticInnerSingletonTest {
 
     @Test
-    public void test() throws Exception {
-        Class<?> clazz = StaticInnerSingleton.class;
-        Constructor<?> constructor = clazz.getDeclaredConstructor();
-        constructor.setAccessible(true);
-        StaticInnerSingleton singleton3 = (StaticInnerSingleton) constructor.newInstance();
+    void testSingleton() throws Exception {
         StaticInnerSingleton singleton1 = StaticInnerSingleton.getInstance();
         StaticInnerSingleton singleton2 = StaticInnerSingleton.getInstance();
         Assertions.assertSame(singleton1, singleton2);
-        Assertions.assertNotSame(singleton1, singleton3);
     }
 
     @Test
-    public void test2() throws Exception {
-        Class<?> clazz = StaticInnerSingleton.class;
-        Constructor<?> constructor = clazz.getDeclaredConstructor();
-        constructor.setAccessible(true);
-        StaticInnerSingleton singleton3 = (StaticInnerSingleton) constructor.newInstance();
+    void testReflectFailure() throws Exception {
         StaticInnerSingleton singleton1 = StaticInnerSingleton.getInstance();
-        StaticInnerSingleton singleton2 = StaticInnerSingleton.getInstance();
-        Assertions.assertSame(singleton1, singleton2);
-        Assertions.assertNotSame(singleton1, singleton3);
+        Constructor<?> constructor = StaticInnerSingleton.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        try {
+            StaticInnerSingleton singleton2 = (StaticInnerSingleton) constructor.newInstance();
+            Assertions.fail();
+        } catch (Exception e) {
+            // Do nothing, test pass
+        }
     }
 }

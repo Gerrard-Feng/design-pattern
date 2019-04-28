@@ -1,19 +1,19 @@
 package com.gerrard.design_pattern.u01_singleton.serialize;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
-public class SerializableSingletonTest {
+public final class SerializableSingletonTest {
 
-    private final String uri1 = "./src/test/resources/serialable1.txt";
-    private final String uri2 = "./src/test/resources/serialable2.txt";
+    private static final String uri1 = "./src/test/resources/serialable1.txt";
+    private static final String uri2 = "./src/test/resources/serialable2.txt";
 
-    public void createSerialFile() {
+    @BeforeAll
+    public static void createSerializedFile() {
         SerializableSingletonFail singleton1 = SerializableSingletonFail.getInstance();
         SerializableSingleton singleton2 = SerializableSingleton.getInstance();
         try (FileOutputStream fos1 = new FileOutputStream(uri1);
@@ -27,8 +27,16 @@ public class SerializableSingletonTest {
         }
     }
 
+    @AfterAll
+    public static void destroySerializedFile() {
+        File file1 = new File(uri1);
+        File file2 = new File(uri2);
+        file1.delete();
+        file2.delete();
+    }
+
     @Test
-    public void testFailure() {
+    void testDeserializeSingletonFailure() {
         SerializableSingletonFail singleton1 = SerializableSingletonFail.getInstance();
         SerializableSingletonFail singleton2 = null;
         try (FileInputStream fio = new FileInputStream(uri1);
@@ -41,7 +49,7 @@ public class SerializableSingletonTest {
     }
 
     @Test
-    public void testSuccess() {
+    void testDeserializeSingletonSuccess() {
         SerializableSingleton singleton1 = SerializableSingleton.getInstance();
         SerializableSingleton singleton2 = null;
         try (FileInputStream fio = new FileInputStream(uri2);

@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 
-public class LazySingletonTest {
+public final class LazySingletonTest {
 
     @Test
-    public void testReflectSuccess() throws Exception {
+    void testReflectSuccess() throws Exception {
         Constructor<?> constructor = LazySingleton1.class.getDeclaredConstructor();
         constructor.setAccessible(true);
         LazySingleton1 singleton1 = (LazySingleton1) constructor.newInstance();
@@ -17,7 +17,7 @@ public class LazySingletonTest {
     }
 
     @Test
-    public void testReflectFailure() throws Exception {
+    void testReflectFailure() throws Exception {
         LazySingleton1 singleton1 = LazySingleton1.getInstance();
         Constructor<?> constructor = LazySingleton1.class.getDeclaredConstructor();
         constructor.setAccessible(true);

@@ -5,17 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 
-public class EagerSingletonTest {
+public final class EagerSingletonTest {
 
     @Test
-    public void testSingleton() {
+    void testSingleton() {
         EagerSingleton singleton1 = EagerSingleton.getInstance();
         EagerSingleton singleton2 = EagerSingleton.getInstance();
         Assertions.assertSame(singleton1, singleton2);
     }
 
     @Test
-    public void testReflectFailure() throws Exception {
+    void testReflectFailure() throws Exception {
         EagerSingleton singleton1 = EagerSingleton.getInstance();
         Constructor<?> constructor = EagerSingleton.class.getDeclaredConstructor();
         constructor.setAccessible(true);
