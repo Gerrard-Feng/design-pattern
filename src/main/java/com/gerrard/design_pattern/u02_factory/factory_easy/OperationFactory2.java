@@ -9,9 +9,8 @@ public final class OperationFactory2 {
 	public static <T extends AbsOperation> T createOperation(Class<T> operationClass) {
 		try {
 			return operationClass.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
-			throw new ArithmeticException("未定义的运算类型");
+		} catch (Exception e) {
+			throw new RuntimeException("Something wrong when create " + operationClass.getName() + " instance");
 		}
 	}
-
 }

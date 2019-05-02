@@ -1,20 +1,15 @@
 package com.gerrard.design_pattern.u02_factory.factory_easy;
 
+import java.math.BigDecimal;
+
 public class OperationDiv extends AbsOperation {
 
-	OperationDiv() {
+    OperationDiv() {
 
-	}
+    }
 
-	@Override
-	double calc(double... vals) {
-		if (vals.length != 2) {
-			throw new ArithmeticException("只支持两个数的除法运算");
-		}
-		if (vals[1] == 0) {
-			throw new ArithmeticException("除数不可为0");
-		}
-		return vals[0] / vals[1];
-	}
-
+    @Override
+    BigDecimal calc(double a, double b) {
+        return new BigDecimal(a).divide(new BigDecimal(b));
+    }
 }

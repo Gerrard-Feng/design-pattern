@@ -1,18 +1,15 @@
 package com.gerrard.design_pattern.u02_factory.factory_easy;
 
+import java.math.BigDecimal;
+
 public final class OperationAdd extends AbsOperation {
 
-	OperationAdd() {
+    OperationAdd() {
 
-	}
+    }
 
-	@Override
-	public double calc(double... vals) {
-		double sum = 0;
-		for (double num : vals) {
-			sum += num;
-		}
-		return sum;
-	}
-
+    @Override
+    public BigDecimal calc(double a, double b) {
+        return new BigDecimal(a).add(new BigDecimal(b));
+    }
 }

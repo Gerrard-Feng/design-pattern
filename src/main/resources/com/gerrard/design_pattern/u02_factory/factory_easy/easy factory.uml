@@ -1,0 +1,16 @@
+@startuml
+
+abstract class AbsOperation {
+  +calc(double a, double b): BigDecimal
+}
+
+class OperationFactory {
+  +{static} createOperation(): AbsOperation
+}
+
+AbsOperation <|-- OperationAdd
+AbsOperation <|-- OperationSub
+
+OperationFactory .> AbsOperation
+
+@enduml

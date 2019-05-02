@@ -1,5 +1,7 @@
 package com.gerrard.design_pattern.u02_factory.factory_easy;
 
+import java.math.BigDecimal;
+
 public final class OperationMul extends AbsOperation {
 
 	OperationMul() {
@@ -7,12 +9,7 @@ public final class OperationMul extends AbsOperation {
 	}
 
 	@Override
-	double calc(double... vals) {
-		double product = 1;
-		for (double num : vals) {
-			product *= num;
-		}
-		return product;
+	BigDecimal calc(double a, double b) {
+		return new BigDecimal(a).multiply(new BigDecimal(b));
 	}
-
 }
