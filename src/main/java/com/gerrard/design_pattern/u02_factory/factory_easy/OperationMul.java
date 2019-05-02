@@ -9,7 +9,7 @@ public final class OperationMul extends AbsOperation {
 	}
 
 	@Override
-	BigDecimal calc(double a, double b) {
+	public BigDecimal calc(double a, double b) {
 		return new BigDecimal(a).multiply(new BigDecimal(b));
 	}
 }
