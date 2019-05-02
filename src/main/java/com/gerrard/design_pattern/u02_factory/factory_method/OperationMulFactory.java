@@ -6,5 +6,4 @@ public final class OperationMulFactory extends AbsOperationFactory {
 	public OperationMul createOperation() {
 		return new OperationMul();
 	}
-
 }

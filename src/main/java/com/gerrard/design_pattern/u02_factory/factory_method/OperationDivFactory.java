@@ -6,5 +6,4 @@ public final class OperationDivFactory extends AbsOperationFactory {
 	public OperationDiv createOperation() {
 		return new OperationDiv();
 	}
-
 }

@@ -5,5 +5,4 @@ public final class OperationAddFactory extends AbsOperationFactory {
 	public OperationAdd createOperation() {
 		return new OperationAdd();
 	}
-
 }

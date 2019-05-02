@@ -1,0 +1,30 @@
+@startuml
+
+abstract class AbsOperationFactory {
+  +createOperation(): AbsOperation
+}
+
+class OperationAddFactory {
+  +createOperation(): OperationAdd
+}
+
+class OperationSubFactory {
+  +createOperation(): OperationSub
+}
+
+abstract class AbsOperation {
+  +calc(double a, double b): BigDecimal
+}
+
+AbsOperation <|-- OperationAdd
+AbsOperation <|-- OperationSub
+
+AbsOperationFactory <|-- OperationAddFactory
+AbsOperationFactory <|-- OperationSubFactory
+
+
+AbsOperationFactory .> AbsOperation
+OperationAddFactory .> OperationAdd
+OperationSubFactory .> OperationSub
+
+@enduml
