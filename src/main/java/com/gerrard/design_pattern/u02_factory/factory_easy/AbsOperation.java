@@ -4,5 +4,5 @@ import java.math.BigDecimal;
 
 public abstract class AbsOperation {
 
-    abstract BigDecimal calc(double a, double b);
+    public abstract BigDecimal calc(double a, double b);
 }
