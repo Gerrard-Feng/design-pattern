@@ -8,7 +8,7 @@ public final class OperationFactory1 {
 
     }
 
-    public static AbsOperation createOperation(OperatorEnum operator) {
+    public static AbsOperation getInstance(OperatorEnum operator) {
         switch (operator) {
             case OPERATOR_ADD:
                 return new OperationAdd();

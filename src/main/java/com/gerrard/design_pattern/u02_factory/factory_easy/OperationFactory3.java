@@ -17,7 +17,7 @@ public final class OperationFactory3 {
     private static final Map<Class<?>, AbsOperation> operMap = new HashMap<>();
 
     @SuppressWarnings("unchecked")
-    public static <T extends AbsOperation> T createOperation(Class<T> operationClass) {
+    public static <T extends AbsOperation> T getInstance(Class<T> operationClass) {
         try {
             T t;
             if (operMap.containsKey(operationClass)) {

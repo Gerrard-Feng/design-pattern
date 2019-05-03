@@ -6,7 +6,7 @@ public final class OperationFactory2 {
 
 	}
 
-	public static <T extends AbsOperation> T createOperation(Class<T> operationClass) {
+	public static <T extends AbsOperation> T getInstance(Class<T> operationClass) {
 		try {
 			return operationClass.newInstance();
 		} catch (Exception e) {
