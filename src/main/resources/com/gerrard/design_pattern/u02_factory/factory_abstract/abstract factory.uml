@@ -1,0 +1,42 @@
+@startuml
+
+abstract class AbsFactory {
+  +createUser(): AbsUser
+  +createDepartment(): AbsDepartment
+}
+
+class FactoryDB2 {
+  +createUser(): UserDB2
+  +createDepartment(): DepartmentDB2
+}
+
+class FactoryMySQL {
+  +createUser(): UserMySQL
+  +createDepartment(): DepartmentMySQL
+}
+
+abstract class AbsDepartment {
+}
+
+abstract class AbsUser {
+  +joinDepartment(department: AbsDepartment)
+  +register()
+}
+
+AbsFactory <|-- FactoryDB2
+AbsFactory <|-- FactoryMySQL
+
+AbsDepartment <|-- DepartmentDB2
+AbsDepartment <|-- DepartmentMySQL
+
+AbsUser <|-- UserDB2
+AbsUser <|-- UserMySQL
+
+AbsFactory ..> AbsDepartment
+AbsFactory ..> AbsUser
+FactoryDB2 .> UserDB2
+FactoryDB2 .> DepartmentDB2
+FactoryMySQL .> UserMySQL
+FactoryMySQL .> DepartmentMySQL
+
+@enduml

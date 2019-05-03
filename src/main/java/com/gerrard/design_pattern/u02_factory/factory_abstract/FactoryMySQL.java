@@ -11,5 +11,4 @@ public final class FactoryMySQL extends AbsFactory {
 	public DepartmentMySQL createDepartment() {
 		return new DepartmentMySQL();
 	}
-
 }

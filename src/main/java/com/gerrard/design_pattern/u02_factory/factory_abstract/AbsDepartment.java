@@ -4,7 +4,6 @@ public abstract class AbsDepartment {
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName().substring(10) + "部门";
+		return "Department[" + this.getClass().getSimpleName() + ":" + this.hashCode() + "]";
 	}
-
 }

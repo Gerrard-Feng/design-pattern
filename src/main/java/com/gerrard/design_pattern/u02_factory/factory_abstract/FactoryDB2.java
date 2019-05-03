@@ -11,5 +11,4 @@ public final class FactoryDB2 extends AbsFactory {
 	public DepartmentDB2 createDepartment() {
 		return new DepartmentDB2();
 	}
-
 }
