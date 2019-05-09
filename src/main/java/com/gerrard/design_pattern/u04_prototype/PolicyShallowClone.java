@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Policy1 implements Cloneable {
+public final class PolicyShallowClone implements Cloneable {
 
 	private String code;
 	private int applicantAge;
@@ -15,8 +15,7 @@ public class Policy1 implements Cloneable {
 	private List<String> specialDescriptions;
 
 	@Override
-	protected Policy1 clone() throws CloneNotSupportedException {
-		return (Policy1) super.clone();
+	public PolicyShallowClone clone() throws CloneNotSupportedException {
+		return (PolicyShallowClone) super.clone();
 	}
-
 }

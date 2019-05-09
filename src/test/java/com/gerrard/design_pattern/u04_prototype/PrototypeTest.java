@@ -10,60 +10,50 @@ import java.util.List;
 public final class PrototypeTest {
 
     @Test
-    public void test1() throws Exception {
-        Liability liability = new Liability.LiabilityBuilder().code("0001").name("责任").category("XPXA").build();
-        String specialDescription1 = "特别约定1";
-        String specialDescription2 = "特别约定2";
+    void testPolicyShallowClone() throws Exception {
+        // Build original policy
+        Liability liability = new Liability.LiabilityBuilder().code("0001").name("Liability").category("XPXA").build();
+        String specialDescription1 = "text1";
+        String specialDescription2 = "text2";
         List<String> specialDescriptions = new ArrayList<>(Arrays.asList(specialDescription1, specialDescription2));
-        Policy1 policyA =
-				new Policy1.Policy1Builder().specialDescriptions(specialDescriptions).liability(liability).code(
-						"险种代码001").applicantAge(18).build();
-        Policy1 policyB = policyA.clone();
-        Assertions.assertTrue(policyA.getApplicantAge() - policyB.getApplicantAge() == 0);
+        PolicyShallowClone policyA = PolicyShallowClone.builder().specialDescriptions(specialDescriptions).liability(liability).code("code001").applicantAge(18).build();
+        // Call clone
+        PolicyShallowClone policyB = policyA.clone();
         Assertions.assertSame(policyA.getCode(), policyB.getCode());
+        Assertions.assertEquals(policyA.getCode(), policyB.getCode());
+        // Assert shallow clone
+        policyA.getSpecialDescriptions().add("text3");
         Assertions.assertSame(policyA.getLiability(), policyB.getLiability());
-        Assertions.assertSame(policyA.getLiability().getCategory(), policyB.getLiability().getCategory());
-        Assertions.assertSame(policyA.getSpecialDescriptions(), policyB.getSpecialDescriptions());
-        Assertions.assertSame(policyA.getSpecialDescriptions().get(0), policyB.getSpecialDescriptions().get(0));
-        Assertions.assertSame(policyA.getSpecialDescriptions().get(1), policyB.getSpecialDescriptions().get(1));
+        Assertions.assertTrue(policyA.getSpecialDescriptions().size() == policyB.getSpecialDescriptions().size());
     }
 
     @Test
-    public void test2() throws Exception {
-        Liability liability = new Liability.LiabilityBuilder().code("0001").name("责任").category("XPXA").build();
-        String specialDescription1 = "特别约定1";
-        String specialDescription2 = "特别约定2";
+    void testPolicyDeepClone() throws Exception {
+        // Build original policy
+        Liability liability = new Liability.LiabilityBuilder().code("0001").name("Liability").category("XPXA").build();
+        String specialDescription1 = "text1";
+        String specialDescription2 = "text2";
         List<String> specialDescriptions = new ArrayList<>(Arrays.asList(specialDescription1, specialDescription2));
-        Policy2 policyA =
-				new Policy2.Policy2Builder().specialDescriptions(specialDescriptions).liability(liability).code(
-						"险种代码001").applicantAge(18).build();
-        Policy2 policyB = policyA.deepClone();
-        Assertions.assertTrue(policyA.getApplicantAge() - policyB.getApplicantAge() == 0);
-        Assertions.assertNotSame(policyA.getCode(), policyB.getCode());
+        PolicyDeepClone policyA = PolicyDeepClone.builder().specialDescriptions(specialDescriptions).liability(liability).code("code001").applicantAge(18).build();
+        // Call clone
+        PolicyDeepClone policyB = policyA.clone();
+        // Assert deep clone
+        policyA.getSpecialDescriptions().add("text3");
         Assertions.assertNotSame(policyA.getLiability(), policyB.getLiability());
-        Assertions.assertNotSame(policyA.getLiability().getCategory(), policyB.getLiability().getCategory());
-        Assertions.assertNotSame(policyA.getSpecialDescriptions(), policyB.getSpecialDescriptions());
-        Assertions.assertNotSame(policyA.getSpecialDescriptions().get(0), policyB.getSpecialDescriptions().get(0));
-        Assertions.assertNotSame(policyA.getSpecialDescriptions().get(1), policyB.getSpecialDescriptions().get(1));
+        Assertions.assertFalse(policyA.getSpecialDescriptions().size() == policyB.getSpecialDescriptions().size());
     }
 
     @Test
-    public void test3() throws Exception {
-        Liability liability = new Liability.LiabilityBuilder().code("0001").name("责任").category("XPXA").build();
-        String specialDescription1 = "特别约定1";
-        String specialDescription2 = "特别约定2";
-        List<String> specialDescriptions = new ArrayList<>(Arrays.asList(specialDescription1, specialDescription2));
-        Policy3 policyA =
-				new Policy3.Policy3Builder().specialDescriptions(specialDescriptions).liability(liability).code(
-						"险种代码001").applicantAge(18).build();
-        Policy3 policyB = policyA.deepClone();
-        Assertions.assertTrue(policyA.getApplicantAge() - policyB.getApplicantAge() == 0);
-        Assertions.assertNotSame(policyA.getCode(), policyB.getCode());
-        Assertions.assertNotSame(policyA.getLiability(), policyB.getLiability());
-        Assertions.assertNotSame(policyA.getLiability().getCategory(), policyB.getLiability().getCategory());
-        Assertions.assertNotSame(policyA.getSpecialDescriptions(), policyB.getSpecialDescriptions());
-        Assertions.assertNotSame(policyA.getSpecialDescriptions().get(0), policyB.getSpecialDescriptions().get(0));
-        Assertions.assertNotSame(policyA.getSpecialDescriptions().get(1), policyB.getSpecialDescriptions().get(1));
+    void testPolicyCopyConstructor() {
+        PolicyCopyConstructor policyA = new PolicyCopyConstructor();
+        PolicyCopyConstructor policyB = new PolicyCopyConstructor(policyA);
+        Assertions.assertNotSame(policyA, policyB);
     }
 
+    @Test
+    void testPolicyCopyFactory() {
+        PolicyCopyFactory policyA = new PolicyCopyFactory();
+        PolicyCopyFactory policyB = PolicyCopyFactory.newInstance(policyA);
+        Assertions.assertNotSame(policyA, policyB);
+    }
 }
