@@ -1,0 +1,38 @@
+@startuml
+
+class Client {
+}
+
+abstract class CompanyItem {
+  #String name
+  #void addCompanyItem(CompanyItem companyItem)
+  #void removeCompanyItem(CompanyItem companyItem)
+  #{abstract} void lineOfDuty()
+  #{abstract} void showStructure()
+}
+
+class FinanceDepartment {
+  +void lineOfDuty()
+  +void showStructure()
+}
+
+class HRDepartment {
+  +void lineOfDuty()
+  +void showStructure()
+}
+
+class Company {
+  -List<CompanyItem> childCompanyItems
+  +void addCompanyItem(CompanyItem companyItem)
+  +void removeCompanyItem(CompanyItem companyItem)
+  +void lineOfDuty()
+  +void showStructure()
+}
+
+CompanyItem <|-- FinanceDepartment
+CompanyItem <|-- HRDepartment
+CompanyItem <|- Company
+CompanyItem <. Company
+Client -> CompanyItem
+
+@enduml
