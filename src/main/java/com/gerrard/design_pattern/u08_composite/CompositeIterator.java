@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public final class CompositeIterator<T> implements Iterator {
 
-    Stack stack = new Stack();
+    private Stack stack = new Stack();
 
     public CompositeIterator(Iterator iterator) {
         stack.push(iterator);

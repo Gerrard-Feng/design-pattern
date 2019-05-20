@@ -23,7 +23,7 @@ public final class FinanceDepartment extends CompanyItem {
     }
 
     @Override
-    protected Iterator createIterator() {
+    public Iterator createIterator() {
         return new LeafIterator();
     }
 }
