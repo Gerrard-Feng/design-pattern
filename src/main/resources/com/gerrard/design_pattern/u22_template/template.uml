@@ -1,0 +1,30 @@
+@startuml
+
+class Client {
+}
+
+abstract class BeverageDrive {
+  +void prepareRecipe()
+  -void boilWater()
+  -void pourInCup()
+  #{abstract} void brew()
+  #{abstract} void addCondiments()
+  #boolean customerWantsCondiments()
+}
+
+class CoffeeBeverage {
+  +void brew()
+  +void addCondiments()
+  +boolean customerWantsCondiments()
+}
+
+class TeaBeverage {
+  +void brew()
+  +void addCondiments()
+}
+
+BeverageDrive <|-- CoffeeBeverage
+BeverageDrive <|-- TeaBeverage
+Client -> BeverageDrive
+
+@enduml
